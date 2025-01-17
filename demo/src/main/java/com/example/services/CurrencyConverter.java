@@ -3,18 +3,17 @@ package com.example.services;
 import java.util.Map;
 
 public class CurrencyConverter {
-    private static final String API_URL = "https://api.exchangerate-api.com/v4/latest/";
+    protected static final String URL_API = "https://api.exchangerate-api.com/v4/latest/";
 
-    public static double convert(String fromCurrency, String toCurrency, double amount) throws Exception {
+    public static double converter(String moedaOrigem, String moedaDestino, double quantidade) throws Exception {
         // Obter dados da API
-        Map<String, Object> rates = ApiClient.getExchangeRates(fromCurrency);
+        Map<String, Object> taxasDeCambio = ApiClient.obterTaxasDeCambio(moedaOrigem);
 
-        if (!rates.containsKey(toCurrency)) {
-            throw new IllegalArgumentException("Moeda de destino não suportada: " + toCurrency);
+        if (!taxasDeCambio.containsKey(moedaDestino)) {
+            throw new IllegalArgumentException("Moeda de destino não suportada: " + moedaDestino);
         }
 
-        double rate = (double) rates.get(toCurrency);
-        return amount * rate;
+        double taxa = (double) taxasDeCambio.get(moedaDestino);
+        return quantidade * taxa;
     }
 }
-
