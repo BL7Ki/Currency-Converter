@@ -7,11 +7,12 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper; 
+// Facilita o trabalho com JSON, convertendo automaticamente entre objetos Java e JSON.
 
 public class ApiClient {
     public static Map<String, Object> obterTaxasDeCambio(String moedaBase) throws Exception {
-        String url = CurrencyConverter.URL_API + moedaBase;
+        String url = CurrencyConverter.URL_API + moedaBase; // https://api.exchangerate-api.com/v4/latest/USD exemplo
 
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest requisicao = HttpRequest.newBuilder()

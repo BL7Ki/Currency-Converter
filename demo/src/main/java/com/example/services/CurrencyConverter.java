@@ -15,5 +15,6 @@ public class CurrencyConverter {
 
         double taxa = (double) taxasDeCambio.get(moedaDestino);
         return quantidade * taxa;
+        // Como a taxa é retornada como um Object, ela é convertida para um double
     }
 }
